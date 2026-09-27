@@ -1,0 +1,3 @@
+import { users } from "@/lib/mock-data";
+import { Badge, PageHeader } from "@/components/ui";
+export default function UsersPage() { return <><PageHeader eyebrow="ADMINISTRATION / 01" title="USER MANAGEMENT" /><div className="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody>{users.map(user => <tr key={user.id}><td className="document-link">{user.name}</td><td>{user.email}</td><td>{user.department}</td><td>{user.role}</td><td><Badge tone={user.status === "Active" ? "success" : "danger"}>{user.status}</Badge></td><td className="actions"><button>View</button><button>Change Role</button><button className="danger">Disable</button></td></tr>)}</tbody></table></div></>; }

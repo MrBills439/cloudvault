@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Secrets / environment files
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+coverage/
+
+# Logs
+*.log
+
+# Local CloudVault test files
+test-document.txt
+
+# Terraform runtime/state
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log

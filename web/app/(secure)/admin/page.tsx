@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { auditEvents, documents, users } from "@/lib/mock-data";
+import { PageHeader, StatCard } from "@/components/ui";
+export default function AdminPage() { return <><PageHeader eyebrow="RESTRICTED AREA / ADMIN" title="ADMIN CONTROL" /><p className="admin-notice">ADMIN MOCK MODE — Role checks will be enforced with Entra ID later.</p><section className="stat-grid"><StatCard value={String(users.length)} label="Total users" tone="yellow" /><StatCard value="12" label="Total documents" /><StatCard value={String(documents.filter(d => d.status === "Deleted").length)} label="Deleted documents" tone="red" /><StatCard value={String(auditEvents.length)} label="Security events" tone="yellow" /></section><section className="quick-links"><Link href="/admin/users">MANAGE USERS <b>→</b></Link><Link href="/admin/documents">MANAGE DOCUMENTS <b>→</b></Link><Link href="/admin/audit">VIEW AUDIT LOG <b>→</b></Link></section></>; }
