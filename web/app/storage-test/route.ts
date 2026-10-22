@@ -21,10 +21,15 @@ export async function GET() {
     const containerClient =
       blobServiceClient.getContainerClient(containerName);
 
-    const blobs: string[] = [];
+    const blobs = [];
 
     for await (const blob of containerClient.listBlobsFlat()) {
-      blobs.push(blob.name);
+      blobs.push({
+        name: blob.name,
+        size: blob.properties.contentLength ?? 0,
+        lastModified: blob.properties.lastModified ?? null,
+        contentType: blob.properties.contentType ?? "unknown",
+    });
     }
 
     return NextResponse.json({
